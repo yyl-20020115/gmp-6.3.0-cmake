@@ -1,4 +1,3 @@
-set(LIBS gmp mpn mpn_asm mpz mpf mpq printf scanf rand)
 set(SRC_FILES 
     ${CMAKE_SOURCE_DIR}/tests/tests.h 
     ${CMAKE_SOURCE_DIR}/tests/trace.c 
@@ -20,18 +19,21 @@ set(SRC_FILES ${SRC_FILES}
     ${CMAKE_SOURCE_DIR}/tests/getopt.h 
     ${CMAKE_SOURCE_DIR}/tests/tailor.h)
 endif()
+add_library(tests ${SRC_FILES})
+
+set(LIBS gmp mpn mpn_asm mpz mpf mpq printf scanf rand tests)
 
 
 
 macro(build_test prefix name)
-add_executable("${prefix}-${name}" ${name}.c ${SRC_FILES})
+add_executable("${prefix}-${name}" ${name}.c )
 target_link_libraries("${prefix}-${name}" ${LIBS})
 target_compile_definitions("${prefix}-${name}" PRIVATE -D_CRT_SUPPRESS_RESTRICT)
 target_include_directories("${prefix}-${name}" PRIVATE ${CMAKE_SOURCE_DIR}/tests)
 endmacro()
 
 macro(build_test_cc prefix name)
-add_executable("${prefix}-${name}" ${name}.cc ${SRC_FILES})
+add_executable("${prefix}-${name}" ${name}.cc )
 target_link_libraries("${prefix}-${name}" ${LIBS})
 target_compile_definitions("${prefix}-${name}" PRIVATE -D_CRT_SUPPRESS_RESTRICT)
 target_include_directories("${prefix}-${name}" PRIVATE ${CMAKE_SOURCE_DIR}/tests)

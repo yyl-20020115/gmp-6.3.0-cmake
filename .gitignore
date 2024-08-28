@@ -9,10 +9,16 @@
 *.user
 *.userosscache
 *.sln.docstates
-
+*.o
+*.lo
+*.exe
+*.a
+*.la
+*.trs
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 .vscode/
+.libs/
 # Mono auto generated files
 mono_crash.*
 [Bb]uild/
