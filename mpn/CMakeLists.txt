@@ -97,15 +97,15 @@ sbpi1_div_qr.c
 scan0.c
 scan1.c
 sec_add_1.c
-#sec_div_qr.c
+sec_div_qr.c
 sec_div_r.c
 sec_invert.c
 sec_mul.c
-#sec_pi1_div_qr.c
+sec_pi1_div_qr.c
 sec_pi1_div_r.c
 sec_powm.c
 sec_sqr.c
-#sec_sub_1.c
+sec_sub_1.c
 set_str.c
 sizeinbase.c
 sqr.c
@@ -114,8 +114,8 @@ sqrlo_basecase.c
 sqrmod_bnm1.c
 sqrtrem.c
 strongfibo.c
-#sub.c
-#sub_1.c
+sub.c
+sub_1.c
 sub_err1_n.c
 sub_err2_n.c
 sub_err3_n.c
@@ -216,14 +216,15 @@ m4-xnor_n.asm
 m4-xor_n.asm
 )
 
-#set_source_files_properties(${ASM_FILES} PROPERTIES CMAKE_ASM_YASM_FLAGS )
-# message(STATUS "COMPILING: ${CMAKE_ASM_MASM_COMPILER} ${CMAKE_ASM_MASM_FLAGS} ${ASM_FILES} ")
-# add_custom_command(OUTPUT ASM_RESULT_FILES COMMAND ${CMAKE_ASM_MASM_COMPILER} ${CMAKE_ASM_MASM_FLAGS} ${ASM_FILES} DEPENDS ${ASM_FILES} COMMENT "Compiling ${ASM_FILES}")
-add_library(mpn_asm ${ASM_FILES})
-target_compile_options(mpn_asm PRIVATE -Xvc -rnasm -pgas)
-add_library(mpn ${SRC_FILES})
+add_library(mpn-asm ${ASM_FILES})
+target_compile_options(mpn-asm PRIVATE -Xvc -rnasm -pgas)
+add_dependencies(mpn-asm gen_asm_files)
 
+add_library(mpn ${SRC_FILES})
 target_compile_definitions(mpn PRIVATE 
--DOPERATION_sec_div_qr
-#-DOPERATION_sec_div_r
--DOPERATION_sec_pi1_div_qr)
+#-DOPERATION_sec_div_qr
+#-DOPERATION_sec_pi1_div_qr
+-DOPERATION_sec_div_r
+-DOPERATION_sec_pi1_div_r
+)
+add_dependencies(mpn mpn-asm)

@@ -21,3 +21,5 @@ build_test_cc(cxx t-prec)
 build_test_cc(cxx t-rand)
 build_test_cc(cxx t-ternary)
 build_test_cc(cxx t-unary)
+
+set(TEST_TARGETS ${LOCAL_TARGETS} ${TEST_TARGETS} PARENT_SCOPE)

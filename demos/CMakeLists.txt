@@ -1,9 +1,8 @@
-set(DEMOS_SRC factorize.c isprime.c pexpr.c primes.c primes.h qcn.c)
+set(LIBS gmp mpq mpf mpz mpn mpn-asm rand printf)
 add_subdirectory(calc)
 add_subdirectory(expr)
 #add_subdirectory(perl)
 
-set(LIBS gmp mpq mpf mpz mpn mpn_asm rand printf)
 add_executable(isprime isprime.c)
 target_link_libraries(isprime ${LIBS})
 

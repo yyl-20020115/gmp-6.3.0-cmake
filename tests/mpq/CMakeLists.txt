@@ -13,3 +13,5 @@ build_test(mpq t-inv)
 build_test(mpq t-md_2exp)
 build_test(mpq t-set_f)
 build_test(mpq t-set_str)
+
+set(TEST_TARGETS ${LOCAL_TARGETS} ${TEST_TARGETS} PARENT_SCOPE)

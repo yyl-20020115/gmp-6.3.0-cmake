@@ -1,23 +1,20 @@
 if(CMAKE_SYSTEM_NAME MATCHES "Windows")
 add_definitions(-D_USE_MATH_DEFINES)
 endif()
-set(LIBSTAT_SRC_FILES ${SRC_FILES} findlc.c zdiv_round.c stat.c statlib.c)
+set(LIBSTAT_SRC_FILES findlc.c zdiv_round.c stat.c statlib.c)
 
 add_library(stat ${LIBSTAT_SRC_FILES})
 target_include_directories(stat PRIVATE ${CMAKE_SOURCE_DIR}/tests)
 
+set(LIBS ${LIBS} stat)
+
 build_test(rand t-iset)
-target_link_libraries(rand-t-iset stat)
 build_test(rand t-lc2exp)
-target_link_libraries(rand-t-lc2exp stat)
 build_test(rand t-mt)
-target_link_libraries(rand-t-mt stat)
 build_test(rand t-rand)
-target_link_libraries(rand-t-rand stat)
 build_test(rand t-urbui)
-target_link_libraries(rand-t-urbui stat)
 build_test(rand t-urmui)
-target_link_libraries(rand-t-urmui stat)
 build_test(rand t-urndmm)
-target_link_libraries(rand-t-urndmm stat)
+
+set(TEST_TARGETS ${LOCAL_TARGETS} ${TEST_TARGETS} PARENT_SCOPE)
 

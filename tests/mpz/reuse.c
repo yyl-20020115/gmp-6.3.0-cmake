@@ -33,6 +33,12 @@ the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
 #ifndef STDOUT_FILENO
 #define STDOUT_FILENO 0
 #endif
+#ifdef _WIN32
+#include <io.h>
+#endif
+#ifndef isatty
+#define isatty(x) _isatty(x)
+#endif
 #endif
 
 #include "gmp-impl.h"

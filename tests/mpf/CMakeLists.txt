@@ -26,3 +26,5 @@ build_test(mpf t-sqrt_ui)
 build_test(mpf t-sub)
 build_test(mpf t-trunc)
 build_test(mpf t-ui_div)
+
+set(TEST_TARGETS ${LOCAL_TARGETS} ${TEST_TARGETS} PARENT_SCOPE)

@@ -630,7 +630,8 @@ see https://www.gnu.org/licenses/.
 
 /* Define one of these to 1 for the desired temporary memory allocation
    method, per --enable-alloca. */
-#define WANT_TMP_ALLOCA 1
+//#define WANT_TMP_ALLOCA 1
+#define WANT_TMP_NOTREENTRANT 1
 /* #undef WANT_TMP_REENTRANT */
 /* #undef WANT_TMP_NOTREENTRANT */
 /* #undef WANT_TMP_DEBUG */

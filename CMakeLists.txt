@@ -4,6 +4,9 @@ project(gmp LANGUAGES C CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)  
 
+set(EXECUTABLE_OUTPUT_PATH  "${CMAKE_BINARY_DIR}/bin")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
+
 if(CMAKE_SYSTEM_NAME MATCHES "Windows")
 add_definitions(-D_WIN32)
 enable_language(ASM ASM_NASM)
@@ -18,6 +21,18 @@ endif()
 include_directories(${PROJECT_SOURCE_DIR})
 
 set(SRC_FILES
+    asl.h
+    config.h
+    fac_table.h
+    fib_table.h
+    gmp-impl.h
+    gmp-mparam.h
+    gmp.h
+    gmpxx.h
+    longlong.h
+    mp_bases.h
+    sieve_table.h
+    trialdivtab.h
     assert.c
     bootstrap.c
     compat.c
@@ -34,24 +49,12 @@ set(SRC_FILES
     nextprime.c
     primesieve.c
 #    tal-debug.c
+#    tal-reent.c
     tal-notreent.c
-    tal-reent.c
     version.c
-    asl.h
-    config.h
-    fac_table.h
-    fib_table.h
-    gmp-impl.h
-    gmp-mparam.h
-    gmp.h
-    gmpxx.h
-    longlong.h
-    mp_bases.h
-    sieve_table.h
-    trialdivtab.h
 )
 add_library(gmp ${SRC_FILES})
-target_compile_definitions(gmp PRIVATE -DWANT_TMP_NOTREENTRANT)
+set(TEST_TARGETS "")
 
 add_subdirectory(mini-gmp)
 add_subdirectory(mpf)
@@ -67,8 +70,15 @@ add_subdirectory(tests)
 # add_subdirectory(tune)
 # add_subdirectory(doc)
 
-
+#always make m4/m4.exe available on your PATH
 add_executable(m4caller m4caller.cpp)
+
+add_custom_target(gen_asm_files
+    COMMAND m4caller  "${CMAKE_CURRENT_SOURCE_DIR}/mpn" 
+    WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/mpn"
+    DEPENDS m4caller
+    COMMENT "Generating asm files with m4"
+)
 
 add_executable(gen-bases gen-bases.c)
 target_link_libraries(gen-bases gmp)

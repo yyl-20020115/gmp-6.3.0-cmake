@@ -1,3 +1,4 @@
+
 set(SRC_FILES 
     ${CMAKE_SOURCE_DIR}/tests/tests.h 
     ${CMAKE_SOURCE_DIR}/tests/trace.c 
@@ -37,22 +38,23 @@ set(SRC_FILES ${SRC_FILES}
 endif()
 add_library(tests ${SRC_FILES})
 
-set(LIBS gmp mpn mpn_asm mpz mpf mpq printf scanf rand tests)
+set(LIBS gmp mpn mpn-asm mpz mpf mpq printf scanf rand tests)
 
 
-
-macro(build_test prefix name)
-add_executable("${prefix}-${name}" ${name}.c )
-target_link_libraries("${prefix}-${name}" ${LIBS})
-target_compile_definitions("${prefix}-${name}" PRIVATE -D_CRT_SUPPRESS_RESTRICT)
-target_include_directories("${prefix}-${name}" PRIVATE ${CMAKE_SOURCE_DIR}/tests)
+macro(build_test suffix name)
+add_executable("${name}-${suffix}" ${name}.c )
+target_link_libraries("${name}-${suffix}" ${LIBS})
+target_compile_definitions("${name}-${suffix}" PRIVATE -D_CRT_SUPPRESS_RESTRICT)
+target_include_directories("${name}-${suffix}" PRIVATE ${CMAKE_SOURCE_DIR}/tests)
+set(LOCAL_TARGETS ${LOCAL_TARGETS} "${name}-${suffix}")
 endmacro()
 
-macro(build_test_cc prefix name)
-add_executable("${prefix}-${name}" ${name}.cc )
-target_link_libraries("${prefix}-${name}" ${LIBS})
-target_compile_definitions("${prefix}-${name}" PRIVATE -D_CRT_SUPPRESS_RESTRICT)
-target_include_directories("${prefix}-${name}" PRIVATE ${CMAKE_SOURCE_DIR}/tests)
+macro(build_test_cc suffix name)
+add_executable("${name}-${suffix}" ${name}.cc )
+target_link_libraries("${name}-${suffix}" ${LIBS})
+target_compile_definitions("${name}-${suffix}" PRIVATE -D_CRT_SUPPRESS_RESTRICT)
+target_include_directories("${name}-${suffix}" PRIVATE ${CMAKE_SOURCE_DIR}/tests)
+set(LOCAL_TARGETS ${LOCAL_TARGETS} "${name}-${suffix}")
 endmacro()
 
 
@@ -65,6 +67,8 @@ build_test(test t-parity)
 build_test(test t-popc)
 build_test(test t-sub)
 
+set(TEST_TARGETS ${LOCAL_TARGETS} ${TEST_TARGETS})
+
 add_subdirectory(cxx)
 add_subdirectory(devel)
 add_subdirectory(misc)
@@ -74,3 +78,16 @@ add_subdirectory(mpq)
 add_subdirectory(mpz)
 add_subdirectory(rand)
 
+# foreach(item ${TEST_TARGETS})
+#     message(STATUS "Target ${item}")
+#     #get_target_property(target_output_path item RUNTIME_OUTPUT_DIRECTORY)
+#     #message(STATUS "Target ${item} output path: ${target_output_path}")
+# endforeach()
+
+add_custom_target(do_tests
+    COMMAND ${CMAKE_COMMAND} -E echo "Running tests"
+    COMMAND ${CMAKE_COMMAND} -E echo "------------------"
+    WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/tests"
+    DEPENDS ${TEST_TARGETS}
+    COMMENT "Test all targets"
+)
