@@ -16,7 +16,7 @@ PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along with
 this program.  If not, see https://www.gnu.org/licenses/.  */
 
-
+#if LINUX
 /* Define if you have the <sys/resource.h> header file. */
 #define HAVE_SYS_RESOURCE_H  0
 
@@ -43,3 +43,5 @@ this program.  If not, see https://www.gnu.org/licenses/.  */
 
 /* Define if the system has the type `stack_t'. */
 #define HAVE_STACK_T  0
+
+#endif

@@ -409,6 +409,35 @@ struct tmp_marker
 __GMP_DECLSPEC void *__gmp_tmp_alloc (unsigned long) ATTRIBUTE_MALLOC;
 __GMP_DECLSPEC void __gmp_tmp_mark (struct tmp_marker *);
 __GMP_DECLSPEC void __gmp_tmp_free (struct tmp_marker *);
+#ifdef TMP_SMARK
+#undef TMP_SMARK
+#endif
+
+#ifdef TMP_SFREE
+#undef TMP_SFREE
+#endif
+#ifdef TMP_SDECL
+#undef TMP_SDECL
+#endif
+#ifdef TMP_SALLOC
+#undef TMP_SALLOC
+#endif
+#ifdef TMP_MARK
+#undef TMP_MARK
+#endif
+#ifdef TMP_FREE
+#undef TMP_FREE
+#endif
+#ifdef TMP_DECL
+#undef TMP_DECL
+#endif
+#ifdef TMP_ALLOC
+#undef TMP_ALLOC
+#endif
+#ifdef TMP_BALLOC
+#undef TMP_BALLOC
+#endif
+
 #define TMP_SDECL		TMP_DECL
 #define TMP_DECL		struct tmp_marker __tmp_marker
 #define TMP_SMARK		TMP_MARK

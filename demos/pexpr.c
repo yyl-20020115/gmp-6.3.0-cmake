@@ -51,8 +51,8 @@ this program.  If not, see https://www.gnu.org/licenses/.  */
 
 #include <time.h>
 #include <sys/types.h>
-#include <sys/time.h>
 #if HAVE_SYS_RESOURCE_H
+#include <sys/time.h>
 #include <sys/resource.h>
 #endif
 

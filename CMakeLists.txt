@@ -44,6 +44,18 @@ set(SRC_FILES
     tal-notreent.c
     tal-reent.c
     version.c
+    asl.h
+    config.h
+    fac_table.h
+    fib_table.h
+    gmp-impl.h
+    gmp-mparam.h
+    gmp.h
+    gmpxx.h
+    longlong.h
+    mp_bases.h
+    sieve_table.h
+    trialdivtab.h
 )
 add_library(gmp ${SRC_FILES})
 target_compile_definitions(gmp PRIVATE -DWANT_TMP_NOTREENTRANT)
