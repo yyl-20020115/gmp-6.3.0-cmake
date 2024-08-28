@@ -123,7 +123,7 @@ this program.  If not, see https://www.gnu.org/licenses/.  */
 
 #define numberof(x)  (sizeof (x) / sizeof ((x)[0]))
 
-
+int yyerror(char* s);
 void
 calc_help (void)
 {
@@ -1957,9 +1957,10 @@ yyreturnlab:
 #line 264 "../../../gmp/demos/calc/calc.y"
 
 
-yyerror (char *s)
+int yyerror (char *s)
 {
   fprintf (stderr, "%s\n", s);
+  return 0;
 }
 
 int calc_option_readline = -1;

@@ -470,7 +470,7 @@ __gmp_doscan (const struct gmp_doscan_funs_t *funs, void *data,
   struct gmp_doscan_params_t  param;
   va_list     ap;
   char	      *alloc_fmt;
-  const char  *fmt, *this_fmt, *end_fmt;
+  const char* fmt, * this_fmt;// , * end_fmt;
   size_t      orig_fmt_len, alloc_fmt_size, len;
   int	      new_fields, new_chars;
   char	      fchar;

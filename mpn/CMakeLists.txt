@@ -1,6 +1,6 @@
 set(SRC_FILES
-add.c
-add_1.c
+#add.c
+#add_1.c
 add_err1_n.c
 add_err2_n.c
 add_err3_n.c
@@ -12,7 +12,7 @@ broot.c
 brootinv.c
 bsqrt.c
 bsqrtinv.c
-cmp.c
+#cmp.c
 cnd_swap.c
 comb_tables.c
 compute_powtab.c
@@ -74,7 +74,7 @@ mu_bdiv_qr.c
 mu_divappr_q.c
 mu_div_q.c
 mu_div_qr.c
-neg.c
+#neg.c
 nussbaumer_mul.c
 perfpow.c
 perfsqr.c
@@ -97,15 +97,15 @@ sbpi1_div_qr.c
 scan0.c
 scan1.c
 sec_add_1.c
-sec_div_qr.c
+#sec_div_qr.c
 sec_div_r.c
 sec_invert.c
 sec_mul.c
-sec_pi1_div_qr.c
+#sec_pi1_div_qr.c
 sec_pi1_div_r.c
 sec_powm.c
 sec_sqr.c
-sec_sub_1.c
+#sec_sub_1.c
 set_str.c
 sizeinbase.c
 sqr.c
@@ -114,8 +114,8 @@ sqrlo_basecase.c
 sqrmod_bnm1.c
 sqrtrem.c
 strongfibo.c
-sub.c
-sub_1.c
+#sub.c
+#sub_1.c
 sub_err1_n.c
 sub_err2_n.c
 sub_err3_n.c
@@ -154,7 +154,7 @@ toom_interpolate_7pts.c
 toom_interpolate_8pts.c
 trialdiv.c
 zero.c
-zero_p.c
+#zero_p.c
 )
 
 set(ASM_FILES
@@ -223,4 +223,7 @@ add_library(mpn_asm ${ASM_FILES})
 target_compile_options(mpn_asm PRIVATE -Xvc -rnasm -pgas)
 add_library(mpn ${SRC_FILES})
 
-target_compile_definitions(mpn PRIVATE -DOPERATION_sec_div_qr -DOPERATION_sec_pi1_div_qr)
+target_compile_definitions(mpn PRIVATE 
+-DOPERATION_sec_div_qr
+#-DOPERATION_sec_div_r
+-DOPERATION_sec_pi1_div_qr)

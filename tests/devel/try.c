@@ -133,6 +133,8 @@ the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
 #if !HAVE_DECL_OPTARG
 extern char *optarg;
 extern int optind, opterr;
+#else 
+#include <getopt.h>
 #endif
 
 #if ! HAVE_DECL_SYS_NERR
@@ -140,7 +142,7 @@ extern int sys_nerr;
 #endif
 
 #if ! HAVE_DECL_SYS_ERRLIST
-extern char *sys_errlist[];
+extern char **sys_errlist;
 #endif
 
 #if ! HAVE_STRERROR
@@ -3426,7 +3428,8 @@ try_init (void)
       exit (1);
     }
 #else
-Error, error, cannot get page size
+//Error, error, cannot get page size
+    pagesize = 4096;
 #endif
 #endif
 

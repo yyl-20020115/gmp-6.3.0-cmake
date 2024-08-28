@@ -89,6 +89,7 @@ typedef __mpz_struct *mpz_ptr;
   do { __mpz_struct __t; __t = *a; *a = *b; *b = __t;} while (0)
 #endif
 
+char* jmpstr = 0;
 jmp_buf errjmpbuf;
 
 enum op_t {NOP, LIT, NEG, NOT, PLUS, MINUS, MULT, DIV, MOD, REM, INVMOD, POW,
@@ -364,7 +365,7 @@ main (int argc, char **argv)
 	      /* ??? Dunno how to align expression position with arrow in
 		 HTML ??? */
 	      fprintf (stderr, "       ");
-	      for (s = jmpval - (long) argv[i]; --s >= 0; )
+	      for (s =( jmpstr - /*(long)*/ argv[i]); --s >= 0; )
 		putc (' ', stderr);
 	      fprintf (stderr, "^\n");
 	    }
@@ -761,7 +762,8 @@ factor (char *str, expr_t *e)
 		  if (str[0] != ')')
 		    {
 		      error = "expected `)'";
-		      longjmp (errjmpbuf, (int) (long) str);
+			  jmpstr = str;
+		      longjmp (errjmpbuf, 0/*(int)(long)str*/);
 		    }
 		  makeexp (e, fns[i].op, e1, NULL);
 		  return str + 1;
@@ -782,7 +784,8 @@ factor (char *str, expr_t *e)
 		  if (str[0] != ',')
 		    {
 		      error = "expected `,' and another operand";
-		      longjmp (errjmpbuf, (int) (long) str);
+			  jmpstr = str;
+		      longjmp (errjmpbuf, 0/*(int)(long)str*/);
 		    }
 
 		  str = skipspace (str + 1);
@@ -803,7 +806,8 @@ factor (char *str, expr_t *e)
 		  if (str[0] != ')')
 		    {
 		      error = "expected `)'";
-		      longjmp (errjmpbuf, (int) (long) str);
+			  jmpstr = str;
+		      longjmp (errjmpbuf, 0/*(int)(long)str*/);
 		    }
 
 		  makeexp (e, fns[i].op, e1, e2);
@@ -820,7 +824,8 @@ factor (char *str, expr_t *e)
       if (str[0] != ')')
 	{
 	  error = "expected `)'";
-	  longjmp (errjmpbuf, (int) (long) str);
+	  jmpstr = str;
+	  longjmp (errjmpbuf, 0/*(int)(long)str*/);
 	}
       str++;
     }
@@ -847,7 +852,8 @@ factor (char *str, expr_t *e)
   else
     {
       error = "operand expected";
-      longjmp (errjmpbuf, (int) (long) str);
+	  jmpstr = str;
+      longjmp (errjmpbuf, 0/*(int)(long)str*/);
     }
   return str;
 }
@@ -1222,7 +1228,7 @@ mpz_eval_expr (mpz_ptr r, expr_t e)
       return;
     case FIBONACCI:
       { mpz_t t;
-	unsigned long int n, i;
+	unsigned long int n = 0, i = 0;
 	mpz_init (lhs);
 	mpz_eval_expr (lhs, e->operands.ops.lhs);
 	if (mpz_sgn (lhs) <= 0 || mpz_cmp_si (lhs, 1000000000) > 0)

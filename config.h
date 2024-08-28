@@ -199,6 +199,15 @@ see https://www.gnu.org/licenses/.
 /* Define to 1 if you have the `gettimeofday' function. */
 #define HAVE_GETTIMEOFDAY 1
 
+/* Define to 1 if you have the `getpagesize' function. */
+#define HAVE_GETPAGESIZE 1
+/* Define to 1 if you have the `mmap' function. */
+/* #undef HAVE_MMAP */
+
+/* Define to 1 if you have the `mprotect' function. */
+#define HAVE_MPROTECT 1
+
+
 #endif
 
 
@@ -262,8 +271,6 @@ see https://www.gnu.org/licenses/.
 /* Define to 1 if you have the <float.h> header file. */
 #define HAVE_FLOAT_H 1
 
-/* Define to 1 if you have the `getpagesize' function. */
-#define HAVE_GETPAGESIZE 1
 
 /* Define to 1 if you have the `getrusage' function. */
 /* #undef HAVE_GETRUSAGE */
@@ -363,7 +370,7 @@ see https://www.gnu.org/licenses/.
 #define HAVE_LIMB_LITTLE_ENDIAN 1
 
 /* Define to 1 if you have the `localeconv' function. */
-#define HAVE_LOCALECONV 1
+#define HAVE_LOCALECONV 0
 
 /* Define to 1 if you have the <locale.h> header file. */
 #define HAVE_LOCALE_H 1
@@ -383,11 +390,6 @@ see https://www.gnu.org/licenses/.
 /* Define to 1 if you have the `memset' function. */
 #define HAVE_MEMSET 1
 
-/* Define to 1 if you have the `mmap' function. */
-/* #undef HAVE_MMAP */
-
-/* Define to 1 if you have the `mprotect' function. */
-#define HAVE_MPROTECT 1
 
 
 /* Define to 1 if you have the `nl_langinfo' function. */

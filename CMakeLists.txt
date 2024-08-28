@@ -23,13 +23,6 @@ set(SRC_FILES
     compat.c
     errno.c
     extract-dbl.c
-    gen-bases.c
-    gen-fac.c
-    gen-fib.c
-    gen-jacobitab.c
-    gen-psqr.c
-    gen-sieve.c
-    gen-trialdivtab.c
     invalid.c
     memory.c
     mp_bpl.c
@@ -70,9 +63,25 @@ add_subdirectory(scanf)
 add_subdirectory(mpn)
 add_subdirectory(cxx)
 add_subdirectory(demos)
-#add_subdirectory(tests)
+add_subdirectory(tests)
 # add_subdirectory(tune)
 # add_subdirectory(doc)
 
 
 add_executable(m4caller m4caller.cpp)
+
+add_executable(gen-bases gen-bases.c)
+target_link_libraries(gen-bases gmp)
+add_executable(gen-fac gen-fac.c)
+target_link_libraries(gen-fac gmp)
+add_executable(gen-fib gen-fib.c)
+target_link_libraries(gen-fib gmp)
+add_executable(gen-jacobitab gen-jacobitab.c)
+target_link_libraries(gen-jacobitab gmp)
+add_executable(gen-psqr gen-psqr.c)
+target_link_libraries(gen-psqr gmp)
+add_executable(gen-sieve gen-sieve.c)
+target_link_libraries(gen-sieve gmp)
+add_executable(gen-trialdivtab gen-trialdivtab.c)
+target_link_libraries(gen-trialdivtab gmp)
+

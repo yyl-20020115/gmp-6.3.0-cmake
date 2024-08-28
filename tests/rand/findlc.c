@@ -16,13 +16,20 @@ Public License for more details.
 You should have received a copy of the GNU General Public License along with
 the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
 
+#include <config.h>
 #include <stdio.h>
 #include <stdlib.h>
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#else
+#include <getopt.h>
+#ifndef SIGHUP
+#define SIGHUP 1
+#endif
+#endif
 #include <signal.h>
 #include <math.h>
 #include "gmpstat.h"
-
 #define RCSID(msg) \
 static /**/const char *const rcsid[] = { (char *)rcsid, "\100(#)" msg }
 

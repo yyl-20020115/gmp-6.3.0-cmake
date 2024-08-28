@@ -25,12 +25,18 @@ the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
 #include <stdlib.h>
 #if HAVE_UNISTD_H
 #include <unistd.h>     /* for isatty */
+#else
+#ifndef STDOUT_FILENO
+#define STDOUT_FILENO 0
 #endif
-
+#endif
+#ifdef WIN32
+#include <io.h>
+#define isatty(x) _isatty(x)
+#endif
 #include "gmp-impl.h"
 
 #include "tests.h"
-
 
 /* "alarm" is not available on mingw32, and the SIGALRM constant is not
    defined.  Don't bother with a spinner in this case.  */

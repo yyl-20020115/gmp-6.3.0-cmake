@@ -37,7 +37,11 @@ Test 1000 integers 0 <= X <= 2^34-1.
 
 #include <stdio.h>
 #include <stdlib.h>
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#else
+#include <getopt.h>
+#endif
 #include <math.h>
 #include "gmpstat.h"
 

@@ -22,6 +22,7 @@ the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
 
 #ifndef	__GMPSTAT_H__
 #define	__GMPSTAT_H__
+#include <gmp-impl.h>
 
 /* Global debug flag.  FIXME: Remove. */
 extern int g_debug;

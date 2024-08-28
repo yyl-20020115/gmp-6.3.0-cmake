@@ -108,6 +108,7 @@ add_library(
     oddfac_1.c
     out_raw.c
     out_str.c
+    stronglucas.c
     perfpow.c
     perfsqr.c
     popcount.c
@@ -141,7 +142,6 @@ add_library(
     sizeinbase.c
     sqrt.c
     sqrtrem.c
-    stronglucas.c
     sub.c
     sub_ui.c
     swap.c
@@ -161,3 +161,4 @@ add_library(
     urandomm.c
     xor.c    
 )
+target_link_libraries(mpz gmp)

@@ -27,7 +27,13 @@ the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#else
+#ifndef STDOUT_FILENO
+#define STDOUT_FILENO 0
+#endif
+#endif
 
 #include "gmp-impl.h"
 #include "tests.h"

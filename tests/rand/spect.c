@@ -24,11 +24,15 @@ the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
 
 /* BUGS: Due to lazy allocation scheme, maximum T is hard coded to MAXT. */
 
+#include <config.h>
 #include <stdio.h>
 #include <stdlib.h>
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#else
+#include <getopt.h>
+#endif
 #include <math.h>
-
 #include "gmpstat.h"
 
 int g_debug = 0;
