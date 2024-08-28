@@ -19,7 +19,8 @@ int main(int argc, char *argv[]) {
         std::cout<<"Directory \""<< path<<"\" does not exist."<<std::endl;
         return 0;
     }
-
+    fs::path original_current = std::filesystem::current_path();
+    std::filesystem::current_path(full_dir_path);
     const std::string prefix = "m4-";
     const std::string extension = ".asm";    
     std::vector<std::string> stems;
@@ -43,6 +44,7 @@ int main(int argc, char *argv[]) {
         std::cout << command << std::endl;
         system(command.c_str());
     }
+    std::filesystem::current_path(original_current);
 
  
     return 0;

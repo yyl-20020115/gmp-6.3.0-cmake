@@ -8,10 +8,26 @@ set(SRC_FILES
     ${CMAKE_SOURCE_DIR}/tests/refmpn.c
     ${CMAKE_SOURCE_DIR}/tests/refmpq.c
     ${CMAKE_SOURCE_DIR}/tests/refmpz.c
-    ${CMAKE_SOURCE_DIR}/tests/amd64check.c
-    #arm32check.c
-    #x86check.c
     )
+
+if(CMAKE_SYSTEM_PROCESSOR MATCHES "arm" OR CMAKE_SYSTEM_PROCESSOR MATCHES "ARM")
+    set(SRC_FILES ${SRC_FILES}
+        ${CMAKE_SOURCE_DIR}/tests/arm32check.c
+    )
+else()
+    if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+    set(SRC_FILES ${SRC_FILES}
+        ${CMAKE_SOURCE_DIR}/tests/amd64check.c
+    )
+    elseif(CMAKE_SIZEOF_VOID_P EQUAL 4)
+    set(SRC_FILES ${SRC_FILES}
+        ${CMAKE_SOURCE_DIR}/tests/x86check.c
+    )
+    else()
+    message(STATUS "Unknown bitness build")
+    endif()
+
+endif()
 
 if(CMAKE_SYSTEM_NAME MATCHES "Windows")
 set(SRC_FILES ${SRC_FILES} 
