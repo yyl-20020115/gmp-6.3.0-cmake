@@ -36,13 +36,12 @@ const std::string suffix
 
 int main(int argc, char* argv[]) {
 
-	if (argc < 2) {
+	if (argc<=1) {
 		std::cout << "Usage: testverifier <test executables;...>" << std::endl;
 		return 0;
 	}
 
 	std::cout << fs::current_path() << std::endl;
-
 	std::vector<std::string> elems;
 	if (split(elems, argv[1], ';')) {
 		for (auto& exe : elems) {
