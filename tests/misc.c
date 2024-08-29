@@ -39,10 +39,11 @@ the GNU MP Library test suite.  If not, see https://www.gnu.org/licenses/.  */
 #  include <time.h>
 # endif
 #endif
-
+#ifndef __GMP_FORCE_mpz_neg
+#define __GMP_FORCE_mpz_neg
+#endif
 #include "gmp-impl.h"
 #include "tests.h"
-
 
 /* The various tests setups and final checks, collected up together. */
 void

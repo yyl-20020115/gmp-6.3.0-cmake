@@ -15,6 +15,14 @@ elseif(CMAKE_SYSTEM_NAME MATCHES "Linux")
 add_definitions(-DLINUX)
 endif()
 
+if(MSVC)
+    add_compile_options(
+        $<$<CONFIG:Debug>:/MTd> #---|-- Statically link the runtime libraries
+        $<$<CONFIG:Release>:/MT> #--|
+    )
+    set(VCPKG_TARGET_TRIPLET x64-windows-static)
+endif()
+
 include_directories(${PROJECT_SOURCE_DIR})
 
 set(SRC_FILES
@@ -54,16 +62,16 @@ add_library(gmp ${SRC_FILES})
 set(TEST_TARGETS "")
 
 add_subdirectory(mini-gmp)
+add_subdirectory(mpn)
 add_subdirectory(mpf)
 add_subdirectory(mpq)
 add_subdirectory(mpz)
-add_subdirectory(printf)
-add_subdirectory(rand)
-add_subdirectory(scanf)
-add_subdirectory(mpn)
 add_subdirectory(cxx)
-add_subdirectory(demos)
+add_subdirectory(rand)
+add_subdirectory(printf)
+add_subdirectory(scanf)
 add_subdirectory(tests)
+add_subdirectory(demos)
 # add_subdirectory(tune)
 # add_subdirectory(doc)
 

@@ -37,13 +37,13 @@ set(SRC_FILES ${SRC_FILES}
     getopt.h 
     tailor.h)
 endif()
-add_library(tests ${SRC_FILES})
 
 set(LIBS gmp mpn mpn-asm mpz mpf mpq printf scanf rand tests)
 
+add_library(tests ${SRC_FILES})
 
 macro(build_test suffix name)
-add_executable("${name}-${suffix}" ${name}.c )
+add_executable("${name}-${suffix}" ${name}.c ${ARGN})
 target_link_libraries("${name}-${suffix}" ${LIBS})
 target_compile_definitions("${name}-${suffix}" PRIVATE -D_CRT_SUPPRESS_RESTRICT)
 target_include_directories("${name}-${suffix}" PRIVATE ${CMAKE_SOURCE_DIR}/tests)
@@ -51,7 +51,7 @@ set(LOCAL_TARGETS ${LOCAL_TARGETS} "${name}-${suffix}")
 endmacro()
 
 macro(build_test_cc suffix name)
-add_executable("${name}-${suffix}" ${name}.cc )
+add_executable("${name}-${suffix}" ${name}.cc ${ARGN})
 target_link_libraries("${name}-${suffix}" ${LIBS})
 target_compile_definitions("${name}-${suffix}" PRIVATE -D_CRT_SUPPRESS_RESTRICT)
 target_include_directories("${name}-${suffix}" PRIVATE ${CMAKE_SOURCE_DIR}/tests)

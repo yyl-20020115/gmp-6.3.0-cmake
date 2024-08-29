@@ -225,6 +225,9 @@ target_compile_definitions(mpn PRIVATE
 #-DOPERATION_sec_div_qr
 #-DOPERATION_sec_pi1_div_qr
 -DOPERATION_sec_div_r
+#-DOPERATION_sec_div_qr
 -DOPERATION_sec_pi1_div_r
+-DOPERATION_sec_sub_1
+-DOPERATION_sec_add_1
 )
 add_dependencies(mpn mpn-asm)

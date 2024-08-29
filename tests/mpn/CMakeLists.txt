@@ -1,11 +1,25 @@
 build_test(mpn logic)
 build_test(mpn t-addaddmul)
-#build_test(mpn t-aors_1)
+build_test(mpn t-aors_1
+    ${CMAKE_SOURCE_DIR}/mpn/sec_add_1.c)
+    target_compile_definitions(
+    t-aors_1-mpn PRIVATE 
+    -DOPERATION_sec_add_1
+)
+
 build_test(mpn t-asmtype)
 build_test(mpn t-bdiv)
 build_test(mpn t-broot)
 build_test(mpn t-brootinv)
-#build_test(mpn t-div)
+
+build_test(mpn t-div 
+    ${CMAKE_SOURCE_DIR}/mpn/sec_div_qr.c 
+    ${CMAKE_SOURCE_DIR}/mpn/sec_pi1_div_qr.c)
+target_compile_definitions(
+    t-div-mpn PRIVATE 
+    -DOPERATION_sec_div_qr
+    -DOPERATION_sec_pi1_div_qr)
+
 build_test(mpn t-divrem_1)
 build_test(mpn t-fat)
 build_test(mpn t-fib2m)
@@ -19,8 +33,14 @@ build_test(mpn t-instrument)
 build_test(mpn t-invert)
 build_test(mpn t-iord_u)
 build_test(mpn t-matrix22)
-#build_test(mpn t-minvert)
-#target_compile_definitions(t-minvert-mpn PRIVATE -D__GMP_FORCE_mpz_neg)
+build_test(mpn t-minvert 
+${CMAKE_SOURCE_DIR}/mpn/sec_add_1.c)
+target_compile_definitions(
+    t-minvert-mpn PRIVATE 
+    -DOPERATION_sec_add_1
+)
+    
+    
 build_test(mpn t-mod_1)
 build_test(mpn t-mp_bases)
 build_test(mpn t-mul)

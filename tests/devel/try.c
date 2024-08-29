@@ -550,7 +550,7 @@ validate_div_qr_1_pi1 (void)
   mp_srcptr qp = fun.d[0].p;
   mp_limb_t r = fun.retval;
   mp_limb_t cy;
-  int cmp;
+  int cmp = 0;
   mp_ptr tp;
   if (r >= divisor)
     {
@@ -1694,7 +1694,7 @@ mpn_toom42_mulmid_fun (mp_ptr dst, mp_srcptr src1, mp_srcptr src2,
 		       mp_size_t size)
 {
   mp_ptr  tspace;
-  mp_size_t n;
+  mp_size_t n = 0;
   TMP_DECL;
   TMP_MARK;
   tspace = TMP_ALLOC_LIMBS (mpn_toom42_mulmid_itch (size));
@@ -2379,7 +2379,7 @@ print_all (void)
 	    break;
 	  }
 	  printf ("   s[%d]=", i);
-	  if (tr->carry_sign && (carry & (1 << i)))
+	  if (tr->carry_sign && (carry & (((mp_limb_t)1) << i)))
 	    printf ("-");
 	  mpn_trace (NULL, s[i].p, SRC_SIZE(i));
 	}
