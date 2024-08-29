@@ -1,28 +1,29 @@
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/tests")
 
 set(SRC_FILES 
-    ${CMAKE_SOURCE_DIR}/tests/tests.h 
-    ${CMAKE_SOURCE_DIR}/tests/trace.c 
-    ${CMAKE_SOURCE_DIR}/tests/misc.c 
-    ${CMAKE_SOURCE_DIR}/tests/memory.c 
-    ${CMAKE_SOURCE_DIR}/tests/spinner.c
-    ${CMAKE_SOURCE_DIR}/tests/refmpf.c
-    ${CMAKE_SOURCE_DIR}/tests/refmpn.c
-    ${CMAKE_SOURCE_DIR}/tests/refmpq.c
-    ${CMAKE_SOURCE_DIR}/tests/refmpz.c
+    tests.h 
+    trace.c 
+    misc.c 
+    memory.c 
+    spinner.c
+    refmpf.c
+    refmpn.c
+    refmpq.c
+    refmpz.c
     )
 
 if(CMAKE_SYSTEM_PROCESSOR MATCHES "arm" OR CMAKE_SYSTEM_PROCESSOR MATCHES "ARM")
     set(SRC_FILES ${SRC_FILES}
-        ${CMAKE_SOURCE_DIR}/tests/arm32check.c
+        arm32check.c
     )
 else()
     if(CMAKE_SIZEOF_VOID_P EQUAL 8)
     set(SRC_FILES ${SRC_FILES}
-        ${CMAKE_SOURCE_DIR}/tests/amd64check.c
+        amd64check.c
     )
     elseif(CMAKE_SIZEOF_VOID_P EQUAL 4)
     set(SRC_FILES ${SRC_FILES}
-        ${CMAKE_SOURCE_DIR}/tests/x86check.c
+        x86check.c
     )
     else()
     message(STATUS "Unknown bitness build")
@@ -32,9 +33,9 @@ endif()
 
 if(CMAKE_SYSTEM_NAME MATCHES "Windows")
 set(SRC_FILES ${SRC_FILES} 
-    ${CMAKE_SOURCE_DIR}/tests/getopt.c 
-    ${CMAKE_SOURCE_DIR}/tests/getopt.h 
-    ${CMAKE_SOURCE_DIR}/tests/tailor.h)
+    getopt.c 
+    getopt.h 
+    tailor.h)
 endif()
 add_library(tests ${SRC_FILES})
 
@@ -78,16 +79,20 @@ add_subdirectory(mpq)
 add_subdirectory(mpz)
 add_subdirectory(rand)
 
-# foreach(item ${TEST_TARGETS})
-#     message(STATUS "Target ${item}")
-#     #get_target_property(target_output_path item RUNTIME_OUTPUT_DIRECTORY)
-#     #message(STATUS "Target ${item} output path: ${target_output_path}")
-# endforeach()
+#message(STATUS "TEST_TARGETS: ${TEST_TARGETS}")
+LIST(REMOVE_ITEM TEST_TARGETS 
+    "sqrtrem_1_2-devel"
+    "try-devel" 
+    "primes-dev-devel" 
+    "gen-test-longlong_h-devel"
+    "t-addaddmul-mpn")
+#message(STATUS "TEST_TARGETS: ${TEST_TARGETS}")
+
+add_executable(testsverifier testsverifier.cpp)
 
 add_custom_target(do_tests
     COMMAND ${CMAKE_COMMAND} -E echo "Running tests"
-    COMMAND ${CMAKE_COMMAND} -E echo "------------------"
-    WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/tests"
-    DEPENDS ${TEST_TARGETS}
+    COMMAND testsverifier "${TEST_TARGETS}"
+    DEPENDS testsverifier ${TEST_TARGETS}
     COMMENT "Test all targets"
 )

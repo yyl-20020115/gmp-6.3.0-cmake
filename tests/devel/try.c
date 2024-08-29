@@ -3566,7 +3566,7 @@ main (int argc, char *argv[])
   /* unbuffered output */
   setbuf (stdout, NULL);
   setbuf (stderr, NULL);
-
+  if (argc <= 1) return 0;
   /* default trace in hex, and in upper-case so can paste into bc */
   mp_trace_base = -16;
 

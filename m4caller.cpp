@@ -50,19 +50,6 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-// #include <stdio.h>
-// #include <stdlib.h>
-// int main(int argc, char *argv[])
-// {
-//     char buffer[4096]={0};
-//     if(argc>=2){
-//         const char* fn = argv[1];
-//         sprintf(buffer, "", fn, fn, fn);
-//         system(buffer);
-//     }
-
-//     return 0;
-// }
 //	m4 -DOPERATION_$* `test -f '$<' || echo '$(srcdir)/'`$< >tmp-$*.s
 //  m4 -DHAVE_CONFIG_H -D__GMP_WITHIN_GMP -DOPERATION_rsh1add_n rsh1add_n.asm >tmp-rsh1add_n.s
 

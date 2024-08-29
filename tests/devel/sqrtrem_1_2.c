@@ -365,7 +365,6 @@ main (int argc, char **argv)
   int mode = 0;
   int justone = 0;
   int quick = 0;
-
   for (;argc > 1;--argc,++argv)
     switch (*argv[1]) {
     default:

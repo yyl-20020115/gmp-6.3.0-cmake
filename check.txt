@@ -1,16 +1,4 @@
-make[1]: Entering directory '/d/Working2/gmp-6.3.0-cmake'
-make[2]: Entering directory '/d/Working2/gmp-6.3.0-cmake/tests'
-make  libtests.la t-bswap.exe t-constants.exe t-count_zeros.exe t-hightomask.exe t-modlinv.exe t-popc.exe t-parity.exe t-sub.exe
-make[4]: 'libtests.la' is up to date.
-make[4]: 't-bswap.exe' is up to date.
-make[4]: 't-constants.exe' is up to date.
-make[4]: 't-count_zeros.exe' is up to date.
-make[4]: 't-hightomask.exe' is up to date.
-make[4]: 't-modlinv.exe' is up to date.
-make[4]: 't-popc.exe' is up to date.
-make[4]: 't-parity.exe' is up to date.
-make[4]: 't-sub.exe' is up to date.
-make  check-TESTS
+
 PASS: t-bswap.exe
 PASS: t-constants.exe
 PASS: t-count_zeros.exe
@@ -19,22 +7,6 @@ PASS: t-modlinv.exe
 PASS: t-popc.exe
 PASS: t-parity.exe
 PASS: t-sub.exe
-============================================================================
-Testsuite summary for GNU MP 6.3.0
-============================================================================
-# TOTAL: 8
-# PASS:  8
-# SKIP:  0
-# XFAIL: 0
-# FAIL:  0
-# XPASS: 0
-# ERROR: 0
-============================================================================
-Making check in devel
-make  t-asmtype.exe t-aors_1.exe t-divrem_1.exe t-mod_1.exe t-fat.exe t-get_d.exe t-instrument.exe t-iord_u.exe t-mp_bases.exe t-perfsqr.exe t-scan.exe logic.exe t-toom22.exe t-toom32.exe t-toom33.exe t-toom42.exe t-toom43.exe t-toom44.exe t-toom52.exe t-toom53.exe t-toom54.exe t-toom62.exe t-toom63.exe t-toom6h.exe t-toom8h.exe t-toom2-sqr.exe t-toom3-sqr.exe t-toom4-sqr.exe t-toom6-sqr.exe t-toom8-sqr.exe t-div.exe t-mul.exe t-mullo.exe t-sqrlo.exe t-mulmod_bnm1.exe t-sqrmod_bnm1.exe t-mulmid.exe t-mulmod_bknp1.exe t-sqrmod_bknp1.exe t-addaddmul.exe t-hgcd.exe t-hgcd_appr.exe t-matrix22.exe t-invert.exe t-bdiv.exe t-fib2m.exe t-broot.exe t-brootinv.exe t-minvert.exe t-sizeinbase.exe t-gcd_11.exe t-gcd_22.exe t-gcdext_1.exe
-make[4]: Entering directory '/d/Working2/gmp-6.3.0-cmake/tests/mpn'
-make  check-TESTS
-
 PASS: t-asmtype.exe
 PASS: t-aors_1.exe
 PASS: t-divrem_1.exe
@@ -74,7 +46,6 @@ PASS: t-sqrmod_bnm1.exe
 PASS: t-mulmid.exe
 PASS: t-mulmod_bknp1.exe
 PASS: t-sqrmod_bknp1.exe
-SKIP: t-addaddmul.exe
 PASS: t-hgcd.exe
 PASS: t-hgcd_appr.exe
 PASS: t-matrix22.exe
@@ -88,19 +59,6 @@ PASS: t-sizeinbase.exe
 PASS: t-gcd_11.exe
 PASS: t-gcd_22.exe
 PASS: t-gcdext_1.exe
-============================================================================
-Testsuite summary for GNU MP 6.3.0
-============================================================================
-# TOTAL: 53
-# PASS:  52
-# SKIP:  1
-# XFAIL: 0
-# FAIL:  0
-# XPASS: 0
-# ERROR: 0
-============================================================================
-Making check in mpz
-make  check-TESTS
 PASS: reuse.exe
 PASS: t-addsub.exe
 PASS: t-cmp.exe
@@ -165,20 +123,6 @@ PASS: t-pprime_p.exe
 PASS: t-nextprime.exe
 PASS: t-remove.exe
 PASS: t-limbs.exe
-============================================================================
-Testsuite summary for GNU MP 6.3.0
-============================================================================
-# TOTAL: 64
-# PASS:  64
-# SKIP:  0
-# XFAIL: 0
-# FAIL:  0
-# XPASS: 0
-# ERROR: 0
-============================================================================
-make  check-TESTS
-make[4]: Entering directory '/d/Working2/gmp-6.3.0-cmake/tests/mpq'
-make[5]: Entering directory '/d/Working2/gmp-6.3.0-cmake/tests/mpq'
 PASS: t-aors.exe
 PASS: t-cmp.exe
 PASS: t-cmp_ui.exe
@@ -194,19 +138,6 @@ PASS: t-set_str.exe
 PASS: io.exe
 PASS: reuse.exe
 PASS: t-cmp_z.exe
-============================================================================
-Testsuite summary for GNU MP 6.3.0
-============================================================================
-# TOTAL: 15
-# PASS:  15
-# SKIP:  0
-# XFAIL: 0
-# FAIL:  0
-# XPASS: 0
-# ERROR: 0
-============================================================================
-Making check in mpf
-make  check-TESTS
 PASS: t-dm2exp.exe
 PASS: t-conv.exe
 PASS: t-add.exe
@@ -235,19 +166,6 @@ PASS: t-trunc.exe
 PASS: t-ui_div.exe
 PASS: t-eq.exe
 PASS: t-pow_ui.exe
-============================================================================
-Testsuite summary for GNU MP 6.3.0
-============================================================================
-# TOTAL: 28
-# PASS:  28
-# SKIP:  0
-# XFAIL: 0
-# FAIL:  0
-# XPASS: 0
-# ERROR: 0
-============================================================================
-Making check in rand
-make  check-TESTS
 PASS: t-iset.exe
 PASS: t-lc2exp.exe
 PASS: t-mt.exe
@@ -255,106 +173,6 @@ PASS: t-rand.exe
 PASS: t-urbui.exe
 PASS: t-urmui.exe
 PASS: t-urndmm.exe
-============================================================================
-Testsuite summary for GNU MP 6.3.0
-============================================================================
-# TOTAL: 7
-# PASS:  7
-# SKIP:  0
-# XFAIL: 0
-# FAIL:  0
-# XPASS: 0
-# ERROR: 0
-============================================================================
-Making check in misc
-make  check-TESTS
 PASS: t-printf.exe
 PASS: t-scanf.exe
 PASS: t-locale.exe
-============================================================================
-Testsuite summary for GNU MP 6.3.0
-============================================================================
-# TOTAL: 3
-# PASS:  3
-# SKIP:  0
-# XFAIL: 0
-# FAIL:  0
-# XPASS: 0
-# ERROR: 0
-============================================================================
-Making check in cxx
-make  check-TESTS
-make[4]: Entering directory '/d/Working2/gmp-6.3.0-cmake/tests/cxx'
-make[5]: Entering directory '/d/Working2/gmp-6.3.0-cmake/tests/cxx'
-============================================================================
-Testsuite summary for GNU MP 6.3.0
-============================================================================
-# TOTAL: 0
-# PASS:  0
-# SKIP:  0
-# XFAIL: 0
-# FAIL:  0
-# XPASS: 0
-# ERROR: 0
-============================================================================
-Making check in mpn
-make[2]: Entering directory '/d/Working2/gmp-6.3.0-cmake/mpn'
-make[2]: Nothing to be done for 'check'.
-make[2]: Leaving directory '/d/Working2/gmp-6.3.0-cmake/mpn'
-Making check in mpz
-make[2]: Entering directory '/d/Working2/gmp-6.3.0-cmake/mpz'
-make[2]: Nothing to be done for 'check'.
-make[2]: Leaving directory '/d/Working2/gmp-6.3.0-cmake/mpz'
-Making check in mpq
-make[2]: Entering directory '/d/Working2/gmp-6.3.0-cmake/mpq'
-make[2]: Nothing to be done for 'check'.
-make[2]: Leaving directory '/d/Working2/gmp-6.3.0-cmake/mpq'
-Making check in mpf
-make[2]: Entering directory '/d/Working2/gmp-6.3.0-cmake/mpf'
-make[2]: Nothing to be done for 'check'.
-make[2]: Leaving directory '/d/Working2/gmp-6.3.0-cmake/mpf'
-Making check in printf
-make[2]: Entering directory '/d/Working2/gmp-6.3.0-cmake/printf'
-make[2]: Nothing to be done for 'check'.
-make[2]: Leaving directory '/d/Working2/gmp-6.3.0-cmake/printf'
-Making check in scanf
-make[2]: Entering directory '/d/Working2/gmp-6.3.0-cmake/scanf'
-make[2]: Nothing to be done for 'check'.
-make[2]: Leaving directory '/d/Working2/gmp-6.3.0-cmake/scanf'
-Making check in rand
-make[2]: Entering directory '/d/Working2/gmp-6.3.0-cmake/rand'
-make[2]: Nothing to be done for 'check'.
-make[2]: Leaving directory '/d/Working2/gmp-6.3.0-cmake/rand'
-Making check in cxx
-make[2]: Entering directory '/d/Working2/gmp-6.3.0-cmake/cxx'
-make[2]: Nothing to be done for 'check'.
-make[2]: Leaving directory '/d/Working2/gmp-6.3.0-cmake/cxx'
-Making check in demos
-make[2]: Entering directory '/d/Working2/gmp-6.3.0-cmake/demos'
-Making check in calc
-make[3]: Entering directory '/d/Working2/gmp-6.3.0-cmake/demos/calc'
-make  check-am
-make[4]: Entering directory '/d/Working2/gmp-6.3.0-cmake/demos/calc'
-make[4]: Nothing to be done for 'check-am'.
-make[4]: Leaving directory '/d/Working2/gmp-6.3.0-cmake/demos/calc'
-make[3]: Leaving directory '/d/Working2/gmp-6.3.0-cmake/demos/calc'
-Making check in expr
-make[3]: Entering directory '/d/Working2/gmp-6.3.0-cmake/demos/expr'
-make[3]: Nothing to be done for 'check'.
-make[3]: Leaving directory '/d/Working2/gmp-6.3.0-cmake/demos/expr'
-make[3]: Entering directory '/d/Working2/gmp-6.3.0-cmake/demos'
-make[3]: Nothing to be done for 'check-am'.
-make[3]: Leaving directory '/d/Working2/gmp-6.3.0-cmake/demos'
-make[2]: Leaving directory '/d/Working2/gmp-6.3.0-cmake/demos'
-Making check in tune
-make[2]: Entering directory '/d/Working2/gmp-6.3.0-cmake/tune'
-make[2]: Nothing to be done for 'check'.
-make[2]: Leaving directory '/d/Working2/gmp-6.3.0-cmake/tune'
-Making check in doc
-make[2]: Entering directory '/d/Working2/gmp-6.3.0-cmake/doc'
-make[2]: Nothing to be done for 'check'.
-make[2]: Leaving directory '/d/Working2/gmp-6.3.0-cmake/doc'
-make[2]: Entering directory '/d/Working2/gmp-6.3.0-cmake'
-make[2]: Nothing to be done for 'check-am'.
-make[2]: Leaving directory '/d/Working2/gmp-6.3.0-cmake'
-make[1]: Leaving directory '/d/Working2/gmp-6.3.0-cmake'
